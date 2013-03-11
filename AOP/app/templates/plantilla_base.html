@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+	Design by Free CSS Templates
+	http://www.freecsstemplates.org
+	Released for free under a Creative Commons Attribution License
+
+	Name       : Coffeelike
+	Version    : 1.0
+	Released   : 20130222
+-->
+<html>
+    <head>
+
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>AOP</title>
+        <link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css" />
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+		<div id="bg">
+			<div id="outer">
+				<div id="header">
+					<div id="logo">
+						<h1>
+							<a href="/menu">Reis AOP manager</a>
+						</h1>
+					</div>
+					<div id="nav">
+						<ul>
+							<li class="first active">
+								<a href="/menu">Home</a>
+							</li>
+							<li>
+								<a href="/administracion">Administracion</a>
+							</li>
+							<li>
+								<a href="/desarrollo">Desarrollo</a>
+							</li>
+							<li>
+								<a href="/cambios">Control de Cambios</a>
+							</li>
+							<li class="last">
+								{% if not session.logged_in %}
+									<a href="{{ url_for('login') }}">log in</a>
+								  {% else %}
+									<a href="{{ url_for('logout') }}">log out</a>
+								  {% endif %}
+							</li>
+						</ul>
+						<br class="clear" />
+					</div>
+				</div>
+			<div id="main">
+				<div id="sidebar">
+					{% block menu %}{% endblock %}
+				</div>
+				<div id="content">
+					{% block content %}{% endblock %}
+				</div>
+			</div>
+			<div id="copyright">
+				{% block footer %}
+					&copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
+				{% endblock %}
+			</div>
+		</div>
+    </body>
+</html>
